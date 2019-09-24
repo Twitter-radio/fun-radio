@@ -16,7 +16,8 @@ export class TextToSpeechComponent implements OnInit {
   tweets: Tweet[];
   isPauseButtonState = true;
   pauseOrResumeButtonText = "pause";
-  pauseOrResumeButtonIconSource = PLAY_ICON_SRC;
+  pauseOrResumeButtonIconSource = PAUSE_ICON_SRC;
+  isShownPauseResumeButton = false;
 
   addVoiceList(voices) {
     const list = window.document.createElement("div");
@@ -32,11 +33,15 @@ export class TextToSpeechComponent implements OnInit {
   }
 
   play(){
+    this.isShownPauseResumeButton = true
     // this._play(this.tweets.toString())
     this._playRecursive(0);
   }
 
   _playRecursive(i: number){
+    if(i == this.tweets.length){
+      this.isShownPauseResumeButton = false;
+    }
     if(i < this.tweets.length) {
       console.log(this.tweets);
       if (this.tweets[i].isRead) {

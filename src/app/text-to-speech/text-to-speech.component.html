@@ -19,10 +19,10 @@
 </div>
 
 <div class="atc-button--dark">
-  <a class="atc-button " (click)="play()">Play this list</a>
+  <a class="atc-button " (click)="play()" *ngIf="!isShownPauseResumeButton">Play this list</a>
 <!--  <a class="atc-button" (click)="pause()">Pause</a>-->
 <!--  <a class="atc-button" (click)="resume()">Resume</a>-->
-  <a class="atc-button" (click)="pauseOrResume()">
+  <a class="atc-button" (click)="pauseOrResume()" *ngIf="isShownPauseResumeButton">
     <img [src]="pauseOrResumeButtonIconSource" alt="Smiley face" height="42" width="42">
   </a>
 </div>
