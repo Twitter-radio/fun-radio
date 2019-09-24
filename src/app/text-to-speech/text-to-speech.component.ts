@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Tweet, TweetsMocked} from "../tweet";
 import Speech from "speak-tts";
 
+const PLAY_ICON_SRC = "assets/img/play.svg";
+const PAUSE_ICON_SRC = "assets/img/pause.svg";
+
 @Component({
   selector: 'app-text-to-speech',
   templateUrl: './text-to-speech.component.html',
@@ -11,6 +14,9 @@ export class TextToSpeechComponent implements OnInit {
 
   speech: Speech;
   tweets: Tweet[];
+  isPauseButtonState = true;
+  pauseOrResumeButtonText = "pause";
+  pauseOrResumeButtonIconSource = PLAY_ICON_SRC;
 
   addVoiceList(voices) {
     const list = window.document.createElement("div");
@@ -39,7 +45,7 @@ export class TextToSpeechComponent implements OnInit {
         console.log("Now playing:" +  i);
         this.speech
           .speak({
-            text: this.tweets[i].text, //textarea.value,
+            text: `${this.tweets[i].author} said ${this.tweets[i].text}`, //textarea.value,
             queue: false,
             listeners: {
               onstart: () => {
@@ -110,6 +116,20 @@ export class TextToSpeechComponent implements OnInit {
       });
   }
 
+  pauseOrResume(){
+    if(this.isPauseButtonState){
+      this.speech.pause();
+      this.isPauseButtonState = false;
+      this.pauseOrResumeButtonText = "Resume";
+      this.pauseOrResumeButtonIconSource = PLAY_ICON_SRC;
+    } else{
+      this.speech.resume();
+      this.isPauseButtonState = true;
+      this.pauseOrResumeButtonText = "Pause";
+      this.pauseOrResumeButtonIconSource = PAUSE_ICON_SRC;
+    }
+  }
+
   pause(){
     this.speech.pause();
   }
@@ -136,7 +156,7 @@ export class TextToSpeechComponent implements OnInit {
       })
       .then(data => {
         console.log("Speech is ready", data);
-        this.addVoiceList(data.voices);
+        // this.addVoiceList(data.voices);
       })
       .catch(e => {
         console.error("An error occured while initializing : ", e);

@@ -10,7 +10,7 @@
 <div class="c40__rule theme-bg-color--dark"></div>
 <div *ngFor="let tweet of tweets">
   <p >
-    <span class="type--roman-16 color--neutral-black"> Tweet: {{tweet.text}}</span>
+    <span class="type--roman-16 color--neutral-black">{{tweet.author}} said: {{tweet.text}}</span>
     <br>
     <span class="type--roman-14 color--neutral-dark-gray">AlreadyRead: {{tweet.isRead}}</span>
   </p>
@@ -20,8 +20,11 @@
 
 <div class="atc-button--dark">
   <a class="atc-button " (click)="play()">Play this list</a>
-  <a class="atc-button" (click)="pause()">Pause</a>
-  <a class="atc-button" (click)="resume()">Resume</a>
+<!--  <a class="atc-button" (click)="pause()">Pause</a>-->
+<!--  <a class="atc-button" (click)="resume()">Resume</a>-->
+  <a class="atc-button" (click)="pauseOrResume()">
+    <img [src]="pauseOrResumeButtonIconSource" alt="Smiley face" height="42" width="42">
+  </a>
 </div>
 
 
