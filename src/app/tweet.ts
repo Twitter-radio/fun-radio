@@ -5,28 +5,18 @@ export class Tweet{
 }
 export const TweetsMocked: Tweet[] = [
   {
-    author: "Lady Gaga",
-    text: 'This is the real corruption that the Fake News Media refuses to even acknowledge!',
-    isRead: false
-  },
-  // {
-  //   author: "Alice",
-  //   text: 'I called an Uber this morning. A 11 min ETA became a 20 min wait. In my experience, waits are usually longer than the ETA. Perhaps the ETA prediction team can\'t ship an unbiased model since a more accurate model deters users from getting an Uber and causes revenue loss?',
-  //   isRead: false
-  // },
-  // {
-  //   author: "John",
-  //   text: 'China and United States have been agreed upon a wonderful trade deal',
-  //   isRead: false
-  // },
-  {
-    author: "Josh Nash",
-    text: 'Just leaving the Great State of Ohio for New York and a few big days at the United Nations. Your Country will be well represented!',
+    author: "Reuters Top News",
+    text: 'For Medicare, the public insurance program for elderly and disabled Americans, payouts for genetic tests jumped from $480 million in 2015 to $1.1 billion in 2018',
     isRead: false
   },
   {
-    author: "Angela",
-    text: 'I love hotpot',
+    author: "Vanity Fair",
+    text: '“While our business has never been stronger,” the now-former CEO claimed, “the scrutiny directed toward me has become a significant distraction”',
     isRead: false
   },
-]
+  {
+    author: "CNN",
+    text: 'Major League Soccer is reversing their ban of an anti-Nazi symbol. The decision follows fans protesting for weeks through walkouts and silent demonstrations during televised soccer games',
+    isRead: false
+  },
+];

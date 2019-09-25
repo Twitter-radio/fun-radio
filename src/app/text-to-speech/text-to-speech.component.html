@@ -1,11 +1,3 @@
-<!--<h1> Speech synthesis </h1>-->
-
-<!--<h2 id="support"></h2>-->
-
-<!--<div>-->
-<!--  <textarea id="text" style="width: 500px; height: 300px">Hello, how are you today ?</textarea>-->
-<!--</div>-->
-
 <h1 class="type--bold-36 color--neutral-black">Tweets</h1>
 <div class="c40__rule theme-bg-color--dark"></div>
 <div *ngFor="let tweet of tweets">
@@ -19,11 +11,23 @@
 </div>
 
 <div class="atc-button--dark">
-  <a class="atc-button " (click)="play()" *ngIf="!isShownPauseResumeButton">Play this list</a>
-<!--  <a class="atc-button" (click)="pause()">Pause</a>-->
-<!--  <a class="atc-button" (click)="resume()">Resume</a>-->
+  <a class="atc-button" (click)="play()" *ngIf="!isShownPauseResumeButton">Play this list</a>
+  <a class="atc-button" *ngIf="isShownPauseResumeButton">
+    <img [src]="skipBeforeButtonIconSource" alt="back" height="42" width="42">
+  </a>
   <a class="atc-button" (click)="pauseOrResume()" *ngIf="isShownPauseResumeButton">
-    <img [src]="pauseOrResumeButtonIconSource" alt="Smiley face" height="42" width="42">
+    <img [src]="pauseOrResumeButtonIconSource" alt="pauseOrResume" height="42" width="42">
+  </a>
+  <a class="atc-button" *ngIf="isShownPauseResumeButton">
+    <img [src]="skipNextButtonIconSource" alt="skip next" height="42" width="42">
+  </a>
+  <a class="atc-button" *ngIf="isShownPauseResumeButton">
+    <img [src]="replayButtonIconSource" alt="replay" height="42" width="42">
+  </a>
+  <br>
+  <br>
+  <a class="atc-button">
+    <img [src]="volumnButtonIconSource" alt="volume" height="42" width="42">
   </a>
 </div>
 

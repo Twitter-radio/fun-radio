@@ -4,6 +4,10 @@ import Speech from "speak-tts";
 
 const PLAY_ICON_SRC = "assets/img/play.svg";
 const PAUSE_ICON_SRC = "assets/img/pause.svg";
+const SKIP_BEFORE_ICON_SRC = "assets/img/back.jpg";
+const SKIP_NEXT_ICON_SRC = "assets/img/skip_next.jpg";
+const REPLAY_ICON_SRC = "assets/img/replay.jpg";
+const VOLUME_ICON_SRC = "assets/img/volumnTune.jpg";
 
 @Component({
   selector: 'app-text-to-speech',
@@ -17,6 +21,10 @@ export class TextToSpeechComponent implements OnInit {
   isPauseButtonState = true;
   pauseOrResumeButtonText = "pause";
   pauseOrResumeButtonIconSource = PAUSE_ICON_SRC;
+  skipBeforeButtonIconSource = SKIP_BEFORE_ICON_SRC;
+  skipNextButtonIconSource = SKIP_NEXT_ICON_SRC;
+  replayButtonIconSource = REPLAY_ICON_SRC;
+  volumnButtonIconSource = VOLUME_ICON_SRC;
   isShownPauseResumeButton = false;
 
   addVoiceList(voices) {
