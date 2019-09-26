@@ -156,10 +156,7 @@ export class TextToSpeechComponent implements OnInit {
   }
 
   skip(){
-    this.isPauseButtonState = false;
-    this.pauseOrResume();
-    this.curTweetIndex += 1;
-    this._playRecursive(this.curTweetIndex)
+    this.speech.cancel();
   }
 
   _init() {
