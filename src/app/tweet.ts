@@ -6,7 +6,7 @@ export class Tweet{
 export const TweetsMocked: Tweet[] = [
   {
     author: "Reuters Top News",
-    text: 'For Medicare, the public insurance program for elderly and disabled Americans, payouts for genetic tests jumped from $480 million in 2015 to $1.1 billion in 2018',
+    text: 'For Medicare, the public insurance program for elderly and disabled Americans, payouts for genetic tests jumped from $480 million in 2015 to 1 billion in 2018',
     isRead: false
   },
   {
