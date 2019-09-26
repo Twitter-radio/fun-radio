@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {Tweet, TweetsMocked} from "../tweet";
 import Speech from "speak-tts";
 
-const PLAY_ICON_SRC = "assets/img/play.svg";
-const PAUSE_ICON_SRC = "assets/img/pause.svg";
+// const PLAY_ICON_SRC = "assets/img/play.svg";
+// const PAUSE_ICON_SRC = "assets/img/pause.svg";
+const PLAY_ICON_SRC = "fa fa-play";
+const PAUSE_ICON_SRC = "fa fa-pause";
 const SKIP_BEFORE_ICON_SRC = "assets/img/back.jpg";
 const SKIP_NEXT_ICON_SRC = "assets/img/skip_next.jpg";
 const REPLAY_ICON_SRC = "assets/img/replay.jpg";

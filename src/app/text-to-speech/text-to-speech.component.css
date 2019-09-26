@@ -1,0 +1,14 @@
+.atc-button {
+  font-size: 1.5rem;
+  border-radius: 1.5rem;
+  padding: .625rem 1.2rem;
+}
+
+.stickybottom {
+  position: fixed;
+  background: white;
+  bottom: 0px;
+  width: 100%;
+  padding: 2em 6.2% 0em;
+  box-shadow: 0 2px 20px #b9c3ca;
+}

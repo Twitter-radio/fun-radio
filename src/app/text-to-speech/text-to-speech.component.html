@@ -1,34 +1,41 @@
-<h1 class="type--bold-36 color--neutral-black">Tweets</h1>
-<div class="c40__rule theme-bg-color--dark"></div>
+
+<div class="container">
+  <h1 class="type--bold-36 color--neutral-black">Tweets</h1>
+  <div class="c40__rule theme-bg-color--dark"></div>
 <div *ngFor="let tweet of tweets">
-  <p >
+  <p>
     <span class="type--roman-16 color--neutral-black">{{tweet.author}} tweeted: {{tweet.text}}</span>
     <br>
     <span class="type--roman-14 color--neutral-dark-gray">AlreadyRead: {{tweet.isRead}}</span>
   </p>
-
-
 </div>
 
-<div class="atc-button--dark">
-  <a class="atc-button" (click)="play()" *ngIf="!isShownPauseResumeButton && !isShownReplayButton">Play this list</a>
-  <a class="atc-button" *ngIf="isShownPauseResumeButton">
-    <img [src]="skipBeforeButtonIconSource" alt="back" height="42" width="42">
-  </a>
-  <a class="atc-button" (click)="pauseOrResume()" *ngIf="isShownPauseResumeButton">
-    <img [src]="pauseOrResumeButtonIconSource" alt="pauseOrResume" height="42" width="42">
-  </a>
-  <a class="atc-button" (click)="skip()" *ngIf="isShownPauseResumeButton">
-    <img [src]="skipNextButtonIconSource" alt="skip next" height="42" width="42">
-  </a>
-  <a class="atc-button" (click)="replay()" *ngIf="isShownReplayButton">
-    <img [src]="replayButtonIconSource" alt="replay" height="42" width="42">
-  </a>
-  <br>
-  <br>
-  <a class="atc-button">
-    <img [src]="volumnButtonIconSource" alt="volume" height="42" width="42">
-  </a>
 </div>
-
+<div class="stickybottom navbar navbar-light">
+  <div class="atc-button--dark">
+    <a (click)="play()" *ngIf="!isShownPauseResumeButton && !isShownReplayButton" class="atc-button">Play this list</a>
+    <a *ngIf="isShownPauseResumeButton" class="atc-button">
+      <!--    <img [src]="skipBeforeButtonIconSource" alt="back" height="42" width="42">-->
+      <i aria-hidden="true" class="fa fa-step-backward "></i>
+    </a>
+    <a (click)="pauseOrResume()" *ngIf="isShownPauseResumeButton" class="atc-button">
+      <!--    <img [src]="pauseOrResumeButtonIconSource" alt="pauseOrResume" height="42" width="42">-->
+      <i [class]="pauseOrResumeButtonIconSource" aria-hidden="true"></i>
+    </a>
+    <a (click)="skip()" *ngIf="isShownPauseResumeButton" class="atc-button">
+      <!--    <img [src]="skipNextButtonIconSource" alt="skip next" height="42" width="42">-->
+      <i aria-hidden="true" class="fa fa-step-forward "></i>
+    </a>
+    <a (click)="replay()" *ngIf="isShownReplayButton" class="atc-button">
+      <!--    <img [src]="replayButtonIconSource" alt="replay" height="42" width="42">-->
+      <i aria-hidden="true" class="fa fa-repeat fa-spin fa-flip-horizontal"></i>
+    </a>
+    <a class="atc-button">
+      <i aria-hidden="true" class="fa fa-volume-up"></i>
+      <!--    <img [src]="volumnButtonIconSource" alt="volume" height="42" width="42">-->
+    </a>
+    <br>
+    <br>
+  </div>
+</div>
 

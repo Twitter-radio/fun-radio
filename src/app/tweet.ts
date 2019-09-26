@@ -38,4 +38,14 @@ export const TweetsMocked: Tweet[] = [
       "He donated his salary to relief agencies working with victims from the 911 terrorist attack",
     isRead: false
   },
+  {
+    author: "Pixelated Boat",
+    text: "If Jerry Seinfeld was still alive he’d probably do a comedy routine about “what’s the deal with computers?” Really makes you think.",
+    isRead: false
+  },
+  {
+    author: "Daddy Doubts",
+    text: "My wife and I were trying to remember the name of the doctor who delivered our baby (it wasn’t her normal doctor) and all we could remember was that he looked and acted like a shitty Jerry Seinfeld.",
+    isRead: false
+  },
 ];
