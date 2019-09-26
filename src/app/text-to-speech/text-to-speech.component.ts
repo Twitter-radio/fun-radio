@@ -161,6 +161,8 @@ export class TextToSpeechComponent implements OnInit {
   }
 
   skip(){
+    this.isPauseButtonState = false
+    this.pauseOrResume()
     this.speech.cancel();
   }
 
