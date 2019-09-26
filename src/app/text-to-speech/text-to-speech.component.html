@@ -11,7 +11,7 @@
 </div>
 
 <div class="atc-button--dark">
-  <a class="atc-button" (click)="play()" *ngIf="!isShownPauseResumeButton">Play this list</a>
+  <a class="atc-button" (click)="play()" *ngIf="!isShownPauseResumeButton && !isShownReplayButton">Play this list</a>
   <a class="atc-button" *ngIf="isShownPauseResumeButton">
     <img [src]="skipBeforeButtonIconSource" alt="back" height="42" width="42">
   </a>
@@ -21,7 +21,7 @@
   <a class="atc-button" (click)="skip()" *ngIf="isShownPauseResumeButton">
     <img [src]="skipNextButtonIconSource" alt="skip next" height="42" width="42">
   </a>
-  <a class="atc-button" *ngIf="isShownPauseResumeButton">
+  <a class="atc-button" (click)="replay()" *ngIf="isShownReplayButton">
     <img [src]="replayButtonIconSource" alt="replay" height="42" width="42">
   </a>
   <br>

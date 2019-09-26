@@ -26,7 +26,7 @@ export class TextToSpeechComponent implements OnInit {
   replayButtonIconSource = REPLAY_ICON_SRC;
   volumnButtonIconSource = VOLUME_ICON_SRC;
   isShownPauseResumeButton = false;
-  curTweetIndex = 0
+  isShownReplayButton = false;
 
   addVoiceList(voices) {
     const list = window.document.createElement("div");
@@ -45,23 +45,23 @@ export class TextToSpeechComponent implements OnInit {
     const list = window.document.createElement("div");
     this.isShownPauseResumeButton = true;
     // this._play(this.tweets.toString())
-    this._playRecursive(this.curTweetIndex);
+    this._playRecursive(0);
   }
 
   _playRecursive(i){
     if(i == this.tweets.length){
       this.isShownPauseResumeButton = false;
+      this.isShownReplayButton = true;
     }
     if(i < this.tweets.length) {
       console.log(this.tweets);
       if (this.tweets[i].isRead) {
-        this.curTweetIndex += 1
         this._playRecursive(i + 1);
       }else {
         console.log("Now playing:" +  i);
         this.speech
           .speak({
-            text: `${this.tweets[i].author} tweeted: ${this.tweets[i].text}`, //textarea.value,
+            text: `${this.tweets[i].author} tweeted: ${this.tweets[i].text}`,
             queue: false,
             listeners: {
               onstart: () => {
@@ -85,8 +85,7 @@ export class TextToSpeechComponent implements OnInit {
           })
           .then(data => {
             this.tweets[i].isRead = true;
-            this.curTweetIndex += 1;
-            setTimeout(() => this._playRecursive(i + 1), 700);
+            setTimeout(() => this._playRecursive(i + 1), 1000);
             console.log("Success !", data);
           })
           .catch(e => {
@@ -97,13 +96,9 @@ export class TextToSpeechComponent implements OnInit {
   }
 
   _play(text: string){
-    // const language = languages.value;
-    // const voice = languages.options[languages.selectedIndex].dataset.name;
-    // if (language) speech.setLanguage(languages.value);
-    // if (voice) speech.setVoice(voice);
     this.speech
       .speak({
-        text: text, //textarea.value,
+        text: text,
         queue: false,
         listeners: {
           onstart: () => {
@@ -153,6 +148,14 @@ export class TextToSpeechComponent implements OnInit {
 
   resume(){
     this.speech.resume();
+  }
+
+  replay(){
+    this.speech.cancel();
+    this.tweets.forEach(tweet => tweet.isRead = false);
+    this.isShownPauseResumeButton = true;
+    this.isShownReplayButton = false;
+    this.play();
   }
 
   skip(){
