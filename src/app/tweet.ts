@@ -19,4 +19,23 @@ export const TweetsMocked: Tweet[] = [
     text: 'Major League Soccer is reversing their ban of an anti-Nazi symbol. The decision follows fans protesting for weeks through walkouts and silent demonstrations during televised soccer games',
     isRead: false
   },
+  {
+    author: "Elon Musk",
+    text: "If advanced AI (beyond basic bots) hasn’t been applied to manipulate social media, it won’t be long before it is",
+    isRead: false
+  },
+  {
+    author: "Lady Gaga",
+    text: "We created the EYE ARMOR kit with Phyllis Cohen at \n" +
+      "@face_lace\n" +
+      " so everyone could feel confident creating an easy winged liner look... but also get creative with these stickers like Sarah Tanno and I love to do.",
+    isRead: false
+  },
+  {
+    author: "Bleacher Report",
+    text: "On this day in 2001, Michael Jordan made the announcement he would come out of retirement  again\n" +
+      "\n" +
+      "He donated his salary to relief agencies working with victims from the 911 terrorist attack",
+    isRead: false
+  },
 ];

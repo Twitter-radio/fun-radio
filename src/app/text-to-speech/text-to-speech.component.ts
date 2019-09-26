@@ -85,8 +85,8 @@ export class TextToSpeechComponent implements OnInit {
           })
           .then(data => {
             this.tweets[i].isRead = true;
-            this.curTweetIndex += 1
-            this._playRecursive(i + 1);
+            this.curTweetIndex += 1;
+            setTimeout(() => this._playRecursive(i + 1), 1000);
             console.log("Success !", data);
           })
           .catch(e => {
@@ -154,9 +154,10 @@ export class TextToSpeechComponent implements OnInit {
   resume(){
     this.speech.resume();
   }
+
   skip(){
-    this.isPauseButtonState = false
-    this.pauseOrResume()
+    this.isPauseButtonState = false;
+    this.pauseOrResume();
     this.curTweetIndex += 1;
     this._playRecursive(this.curTweetIndex)
   }
@@ -167,8 +168,8 @@ export class TextToSpeechComponent implements OnInit {
       .init({
         volume: 0.5,
         lang: "en-GB",
-        rate: 1,
-        pitch: 1,
+        rate: 0.9,
+        pitch: 3,
         //'voice':'Google UK English Male',
         //'splitSentences': false,
         listeners: {
