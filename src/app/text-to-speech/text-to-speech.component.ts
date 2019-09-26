@@ -26,6 +26,7 @@ export class TextToSpeechComponent implements OnInit {
   replayButtonIconSource = REPLAY_ICON_SRC;
   volumnButtonIconSource = VOLUME_ICON_SRC;
   isShownPauseResumeButton = false;
+  curTweetIndex = 0
 
   addVoiceList(voices) {
     const list = window.document.createElement("div");
@@ -33,7 +34,7 @@ export class TextToSpeechComponent implements OnInit {
       '<h2>Available Voices</h2><select id="languages"><option value="">autodetect language</option>';
     voices.forEach(voice => {
       html += `<option value="${voice.lang}" data-name="${voice.name}">${
-        voice.name
+        voice.name 
       } (${voice.lang})</option>`;
     });
     list.innerHTML = html;
@@ -41,24 +42,26 @@ export class TextToSpeechComponent implements OnInit {
   }
 
   play(){
-    this.isShownPauseResumeButton = true
+    const list = window.document.createElement("div");
+    this.isShownPauseResumeButton = true;
     // this._play(this.tweets.toString())
-    this._playRecursive(0);
+    this._playRecursive(this.curTweetIndex);
   }
 
-  _playRecursive(i: number){
+  _playRecursive(i){
     if(i == this.tweets.length){
       this.isShownPauseResumeButton = false;
     }
     if(i < this.tweets.length) {
       console.log(this.tweets);
       if (this.tweets[i].isRead) {
+        this.curTweetIndex += 1
         this._playRecursive(i + 1);
       }else {
         console.log("Now playing:" +  i);
         this.speech
           .speak({
-            text: `${this.tweets[i].author} said ${this.tweets[i].text}`, //textarea.value,
+            text: `${this.tweets[i].author} tweeted: ${this.tweets[i].text}`, //textarea.value,
             queue: false,
             listeners: {
               onstart: () => {
@@ -82,6 +85,7 @@ export class TextToSpeechComponent implements OnInit {
           })
           .then(data => {
             this.tweets[i].isRead = true;
+            this.curTweetIndex += 1
             this._playRecursive(i + 1);
             console.log("Success !", data);
           })
@@ -150,6 +154,12 @@ export class TextToSpeechComponent implements OnInit {
   resume(){
     this.speech.resume();
   }
+  skip(){
+    this.isPauseButtonState = false
+    this.pauseOrResume()
+    this.curTweetIndex += 1;
+    this._playRecursive(this.curTweetIndex)
+  }
 
   _init() {
     this.speech = new Speech();
@@ -172,7 +182,7 @@ export class TextToSpeechComponent implements OnInit {
         // this.addVoiceList(data.voices);
       })
       .catch(e => {
-        console.error("An error occured while initializing : ", e);
+        console.error("An error occurred while initializing : ", e);
       });
 
     const text = this.speech.hasBrowserSupport()

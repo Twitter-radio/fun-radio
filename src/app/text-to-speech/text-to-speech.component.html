@@ -2,7 +2,7 @@
 <div class="c40__rule theme-bg-color--dark"></div>
 <div *ngFor="let tweet of tweets">
   <p >
-    <span class="type--roman-16 color--neutral-black">{{tweet.author}} said: {{tweet.text}}</span>
+    <span class="type--roman-16 color--neutral-black">{{tweet.author}} tweeted: {{tweet.text}}</span>
     <br>
     <span class="type--roman-14 color--neutral-dark-gray">AlreadyRead: {{tweet.isRead}}</span>
   </p>
@@ -18,7 +18,7 @@
   <a class="atc-button" (click)="pauseOrResume()" *ngIf="isShownPauseResumeButton">
     <img [src]="pauseOrResumeButtonIconSource" alt="pauseOrResume" height="42" width="42">
   </a>
-  <a class="atc-button" *ngIf="isShownPauseResumeButton">
+  <a class="atc-button" (click)="skip()" *ngIf="isShownPauseResumeButton">
     <img [src]="skipNextButtonIconSource" alt="skip next" height="42" width="42">
   </a>
   <a class="atc-button" *ngIf="isShownPauseResumeButton">
