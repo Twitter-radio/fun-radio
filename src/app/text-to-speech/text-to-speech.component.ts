@@ -86,7 +86,7 @@ export class TextToSpeechComponent implements OnInit {
           .then(data => {
             this.tweets[i].isRead = true;
             this.curTweetIndex += 1;
-            setTimeout(() => this._playRecursive(i + 1), 1000);
+            setTimeout(() => this._playRecursive(i + 1), 700);
             console.log("Success !", data);
           })
           .catch(e => {
@@ -156,10 +156,7 @@ export class TextToSpeechComponent implements OnInit {
   }
 
   skip(){
-    this.isPauseButtonState = false;
-    this.pauseOrResume();
-    this.curTweetIndex += 1;
-    this._playRecursive(this.curTweetIndex)
+    this.speech.cancel();
   }
 
   _init() {
